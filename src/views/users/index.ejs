@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crud Task</title>
+</head>
+<body>
+
+<h1> <%= title %>  <a href="/createForm">Create User</a> </h1>
+
+<% if (users.length > 0) { %>
+<table border="1" style="width: 500px; margin: 0 auto">
+    <tr>
+        <td>Name</td>
+        <td>age</td>
+        <td colspan="2">option</td>
+    </tr>
+    <% for(var i=0; i < users.length; i++) { %>
+        <tr>
+            <td><%= users[i].name %></td>
+            <td><%= users[i].age %></td>
+            <td colspan="2">
+                <a href="/edit/<%= users[i].id %>">Edit</a>
+                <a href="/delete/<%= users[i].id %>">delete</a>
+            </td>
+        </tr>
+    <% } %>
+</table>
+<% }else{ %>
+    <p> No Users</p>
+<% } %>
+</body>
+</html>
