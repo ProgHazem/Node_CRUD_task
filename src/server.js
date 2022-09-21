@@ -1,8 +1,7 @@
 const express = require('express')
 const path = require('path')
 const mongoose = require('mongoose')
-// const UserRoutes = require('src/routes/user.route')
-const Users = require('./controllers/user.controller')
+const UserRoutes = require('./routes/user.route')
 const app = express()
 
 const bodyParser = require('body-parser')
@@ -12,14 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(express.static('public'));
-// app.use('/users', UserRoutes);
-// const router = app.Router()
-
-app.get('/', Users.GetUsers)
-app.get('/createForm', Users.CreateForm)
-app.post('/create', Users.CreateUser)
-app.get('/edit/:id', Users.EditForm)
-app.post('/update/:id', Users.UpdateUser)
-app.get('/delete/:id', Users.DeleteUser)
+app.use('/', UserRoutes);
 
 module.exports = app;
